@@ -9,15 +9,14 @@ use tauri::{
 };
 
 fn main() {
-    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
+    let hide = CustomMenuItem::new("hide".to_string(), "Hide");
     let pause = CustomMenuItem::new("play_pause".to_string(), "Play/Pause");
-    let previous = CustomMenuItem::new("prev".to_string(), "Prev");
-    let next = CustomMenuItem::new("next".to_string(), "Next");
+    let quit = CustomMenuItem::new("quit".to_string(), "Quit");
+
     let tray_menu = SystemTrayMenu::new()
         .add_item(pause)
-        .add_item(previous)
-        .add_item(next)
         .add_native_item(SystemTrayMenuItem::Separator)
+        .add_item(hide)
         .add_item(quit);
     let system_tray = SystemTray::new().with_menu(tray_menu);
 
@@ -37,11 +36,17 @@ fn main() {
                         .eval("document.querySelector('.previous-button').click() ")
                         .unwrap();
                 }
-                "next" => {
+                "hide" => {
+                    let item_handle = app.tray_handle().get_item(&id);
                     let window = app.get_window("main").unwrap();
-                    window
-                        .eval("document.querySelector('.next-button').click() ")
-                        .unwrap();
+
+                    if window.is_visible().unwrap() {
+                        window.hide().unwrap();
+                        item_handle.set_title("Show").unwrap();
+                    } else {
+                        window.show().unwrap();
+                        item_handle.set_title("Hide").unwrap();
+                    }
                 }
                 "quit" => {
                     std::process::exit(0);
