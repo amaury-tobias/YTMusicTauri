@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v3
       - name: PNPM setup
         uses: pnpm/action-setup@v2
+        with:
+          version: 7.5.2
       - name: Node.js setup
         uses: actions/setup-node@v3
         with:
