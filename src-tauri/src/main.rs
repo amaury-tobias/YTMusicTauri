@@ -3,6 +3,10 @@
     windows_subsystem = "windows"
 )]
 
+#[cfg(target_os = "macos")]
+#[macro_use]
+extern crate objc;
+
 use tauri::{
     CustomMenuItem, GlobalShortcutManager, Manager, RunEvent, SystemTray, SystemTrayEvent,
     SystemTrayMenu, SystemTrayMenuItem,
@@ -21,6 +25,17 @@ fn main() {
     let system_tray = SystemTray::new().with_menu(tray_menu);
 
     let builder = tauri::Builder::default()
+        .setup(|app| {
+            let main_window = app.get_window("main").unwrap();
+            main_window.with_webview(|webview| {
+            #[cfg(target_os = "macos")]
+            unsafe {
+                use objc_foundation::{NSString, INSString};
+                let () = msg_send![webview.inner(), setCustomUserAgent: NSString::from_str("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.1 Safari/605.1.15")];
+            }
+            }).unwrap();
+            Ok(())
+        })
         .system_tray(system_tray)
         .on_system_tray_event(|app, event| match event {
             SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
