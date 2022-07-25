@@ -3,18 +3,6 @@
 version = 3
 
 [[package]]
-name = "YTMusic"
-version = "0.1.1"
-dependencies = [
- "objc",
- "objc-foundation",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
-]
-
-[[package]]
 name = "adler"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3286,3 +3274,15 @@ name = "xml-rs"
 version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2d7d3948613f75c98fd9328cfdcc45acc4d360655289d0a7d4ec931392200a3"
+
+[[package]]
+name = "ytmusic"
+version = "0.2.0"
+dependencies = [
+ "objc",
+ "objc-foundation",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+]
