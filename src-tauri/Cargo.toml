@@ -1,12 +1,12 @@
 [package]
 publish = false
-name = "YTMusic"
+name = "ytmusic"
 version = "0.1.1"
 description = "YT music desktop application"
 authors = ["Amaury Tobias"]
 license = "MIT"
 repository = ""
-default-run = "YTMusic"
+default-run = "ytmusic"
 edition = "2021"
 rust-version = "1.57"
 
