@@ -15,15 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: PNPM setup
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7.5.2
-      - name: Node.js setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
       - name: Rust setup
         uses: actions-rs/toolchain@v1
         with:
@@ -33,12 +24,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-      - name: install app dependencies and build it
-        run: pnpm install
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tauriScript: cargo tauri
           tagName: app-v__VERSION__
           releaseName: "App v__VERSION__"
           releaseBody: "See the assets to download this version and install."
