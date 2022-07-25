@@ -7,12 +7,12 @@ Desktop wrapper for YTMusic with some global shortcuts
 First you need to setup tauri enviroment, see [prerequisites.](https://tauri.app/v1/guides/getting-started/prerequisites)
 
 ```sh
-pnpm i
-pnpm tauri dev
+cargo install tauri-cli
+cargo tauri dev
 ```
 
 ## Build
 
 ```sh
-pnpm tauri build
+cargo tauri build
 ```
