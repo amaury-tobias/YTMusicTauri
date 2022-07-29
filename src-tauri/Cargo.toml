@@ -1,7 +1,7 @@
 [package]
 publish = false
 name = "ytmusic"
-version = "0.2.0"
+version = "0.3.0"
 description = "YT music desktop application"
 authors = ["Amaury Tobias"]
 license = "MIT"

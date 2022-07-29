@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "YTMusic",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "tauri": {
     "allowlist": {
@@ -21,6 +21,9 @@
       "active": true,
       "category": "DeveloperTool",
       "copyright": "",
+      "deb": {
+        "files": {}
+      },
       "externalBin": [],
       "icon": [
         "icons/32x32.png",
