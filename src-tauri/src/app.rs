@@ -1,6 +1,6 @@
 #[cfg(target_os = "macos")]
-#[macro_use]
-extern crate objc;
+use objc::{msg_send, sel, sel_impl};
+
 #[cfg(target_os = "macos")]
 use objc_foundation::{INSString, NSString};
 
