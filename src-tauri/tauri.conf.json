@@ -1,10 +1,9 @@
 {
-  "$schema": "tauri.conf.schema.json",
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "devPath": "https://music.youtube.com",
-    "distDir": "../dist"
+    "distDir": "https://music.youtube.com"
   },
   "package": {
     "productName": "YTMusic",
@@ -63,6 +62,7 @@
     "windows": [
       {
         "title": "YT Music",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:107.0) Gecko/20100101 Firefox/107.0",
         "url": "https://music.youtube.com",
         "width": 800,
         "height": 600,

@@ -3,11 +3,10 @@
     windows_subsystem = "windows"
 )]
 
-use ytmusic::{app, global_shortcuts, tray};
+use ytmusic::{global_shortcuts, tray};
 
 fn main() {
     let builder = tauri::Builder::default()
-        .setup(app::handle_setup)
         .system_tray(tray::get_system_tray())
         .on_system_tray_event(tray::handle_tray_event);
 
