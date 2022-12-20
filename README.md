@@ -1,6 +1,6 @@
 # YTMusic Tauri
 
-Desktop wrapper for YTMusic with some global shortcuts
+Desktop wrapper for YTMusic.
 
 ## Develop
 
